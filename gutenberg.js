@@ -14,34 +14,34 @@ const daArray = [];
         const link = ($(top5List[i]).children().first().attr('href'));
         const info = await axios.get(`${baseURL}/${link}`);
         // const title = $(console.log($(top5List[i]).text()));
-        var something = $(top5List[i]).text();
+        var authorGet = $(top5List[i]).text();
 
-        var author = something;
+        var author2 = authorGet;
         // this is for the title name--------------------
-        var n = author.indexOf("by");
-        var tab2 = author.substr(0, n);
+        var n = author2.indexOf("by");
+        var tab2 = author2.substr(0, n);
         console.log('Title: ' + tab2);
-        const TheActualTitle = tab2
+        const title = tab2;
 
         // this is for the authors name -----------------
 
-        var n = author.indexOf("by");
-        var tab = author.substr(n + 2);
+        var n = author2.indexOf("by");
+        var tab = author2.substr(n + 2);
         console.log('Author: ' + tab);
-        const TheActualAuthor = tab
+        const Author = tab;
 
         // language--------------------------------------
         // var maybe = "maybe next time";
-        let language = $(`#bibrec div:nth-child(1) table tbody tr:nth-child(5) td`, info.data).text();
+        let language2 = $(`#bibrec div:nth-child(1) table tbody tr:nth-child(5) td`, info.data).text();
         let languageThing = $(`#bibrec div:nth-child(1) table tbody tr:nth-child(3) td`, info.data).text();
         // this check to see if one of the two varible is equal to english and then writes it
-        if (language = "English") {
+        if (language2 = "English") {
             console.log("Language: " + language);
-            TheActualLangauge = language;
+            language = language;
         } else {
             if (languageThing = "English") {
                 console.log("Language: " + languageThing);
-                TheActualLangauge = languageThing;
+                language = languageThing;
             }
         }
 
@@ -58,7 +58,7 @@ const daArray = [];
             }
         }
 		// this pushes the varibles and data into the array
-        daArray.push({bookFormats,TheActualTitle, TheActualAuthor, TheActualLangauge});
+        daArray.push({bookFormats,title, Author, langauge});
         
 
 
